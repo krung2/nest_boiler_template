@@ -1,0 +1,31 @@
+version: "3.7"
+
+services: 
+  server:
+    env_file:
+      - .env
+    depends_on: 
+      - mysql
+    ports: 
+      - "${PORT}:${PORT}"
+    build: .
+    environment:
+      PORT: ${PORT}
+
+      DATABASE_HOST: mysql
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_DATABASE: ${DATABASE_DATABASE}
+      
+  mysql:
+    image: mysql:5.7
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    env_file: 
+      - mysql.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_DATABASE=${DATABASE_DATABASE}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
