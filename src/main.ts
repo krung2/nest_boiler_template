@@ -1,12 +1,16 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
-import { NestExpressApplication } from '@nestjs/platform-express';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
 import { setUpSwagger } from './config/swagger/swagger';
 
 async function bootstrap() {
-  const app: NestExpressApplication = await NestFactory.create<NestExpressApplication>(AppModule, { cors: false });
+  const app: NestFastifyApplication = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter(),
+    { cors: false }
+  );
   const port: number = app.get(ConfigService).get('PORT');
   setUpSwagger(app);
   app.useGlobalPipes(new ValidationPipe());
