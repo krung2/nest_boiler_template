@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { validate } from './config/env.validation';
 import { DatabaseModule } from './database/database.module';
-import { ErrorFilter } from './filters/error.filter';
+import { ErrorFilter } from './common/filters/error.filter';
 
 @Module({
   imports: [
