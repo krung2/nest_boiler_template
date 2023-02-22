@@ -17,9 +17,12 @@ import { ErrorFilter } from './common/filters/error.filter';
     DatabaseModule,
   ],
   controllers: [AppController],
-  providers: [AppService, {
-    provide: APP_FILTER,
-    useClass: ErrorFilter,
-  }],
+  providers: [
+    AppService,
+    {
+      provide: APP_FILTER,
+      useClass: ErrorFilter,
+    },
+  ],
 })
-export class AppModule { }
+export class AppModule {}

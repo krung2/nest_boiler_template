@@ -1,8 +1,7 @@
-import { INestApplication } from "@nestjs/common";
-import { DocumentBuilder, OpenAPIObject, SwaggerModule } from "@nestjs/swagger";
+import { INestApplication } from '@nestjs/common';
+import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 
 export const setUpSwagger = (app: INestApplication): void => {
-
   const option: Omit<OpenAPIObject, 'paths'> = new DocumentBuilder()
     .setTitle('nest boiler template')
     .setDescription('nest boiler template')
@@ -14,4 +13,4 @@ export const setUpSwagger = (app: INestApplication): void => {
   const documnet = SwaggerModule.createDocument(app, option);
 
   SwaggerModule.setup('docs', app, documnet);
-}
+};

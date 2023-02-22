@@ -1,13 +1,10 @@
-import { Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
-import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from "@nestjs/typeorm";
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 
 @Injectable()
 export class MysqlConnectService implements TypeOrmOptionsFactory {
-
-  constructor(
-    private readonly configService: ConfigService
-  ) { }
+  constructor(private readonly configService: ConfigService) {}
 
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
@@ -19,6 +16,6 @@ export class MysqlConnectService implements TypeOrmOptionsFactory {
       database: this.configService.get('DATABASE_DATABASE'),
       entities: [__dirname + '/../**/**/*.entity{.ts,.js}'],
       synchronize: true,
-    }
+    };
   }
 }
