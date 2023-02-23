@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services: 
   server:
@@ -17,14 +17,15 @@ services:
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_DATABASE: ${DATABASE_DATABASE}
-      
+
   mysql:
     image: mysql:5.7
+    platform: linux/amd64
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     env_file: 
-      - mysql.env
+      - .env
     environment:
       - MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD}
       - MYSQL_DATABASE=${DATABASE_DATABASE}

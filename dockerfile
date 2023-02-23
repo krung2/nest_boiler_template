@@ -1,11 +1,13 @@
-FROM node:12
+FROM node:16
 
-WORKDIR /usr/src/moram
+WORKDIR /usr/src/test1
 
-COPY package.json package.json
+COPY package.json .
 
-RUN npm install
+RUN npm install --force
 
 COPY . .
 
-CMD ["npm", "start"]
+RUN npm run --script build
+
+CMD [ "node", "dist/main.js" ]
