@@ -22,6 +22,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(port, '0.0.0.0');
+
   Logger.log(`Application is running on: ${await app.getUrl()}`);
 }
 
