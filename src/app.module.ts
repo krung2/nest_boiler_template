@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { validate } from './config/env.validation';
 import { DatabaseModule } from './database/database.module';
 import { ErrorFilter } from './common/filters/error.filter';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ErrorFilter } from './common/filters/error.filter';
       validate,
     }),
     DatabaseModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [
